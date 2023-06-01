@@ -1,0 +1,10 @@
+import { type Chess, type Move, type Piece } from 'chess.js';
+import type { Color, Key } from 'chessground/types';
+import type { Threat, Piece as PieceType } from '@/typings/Chessboard';
+export declare function getThreats(moves: Move[]): Threat[];
+export declare function shortToLongColor(color: 'w' | 'b'): Color;
+export declare function roleAbbrToRole(role: string): PieceType;
+export declare function possibleMoves(game: Chess): Map<Key, Key[]>;
+export declare function isPromotion(dest: Key, piece: Piece | null): boolean;
+export declare function getPossiblePromotions(legalMoves: Move[]): Move[];
+export declare function merge(target: any, source: any): any;
