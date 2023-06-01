@@ -30,11 +30,11 @@ declare const _default: import("vue").DefineComponent<{
     };
 }>> & {
     onBoardCreated?: ((boardApi: BoardApi) => any) | undefined;
-    onCheck?: ((isInCheck: PieceColor) => any) | undefined;
+    onMove?: ((move: import("chess.js").Move) => any) | undefined;
     onCheckmate?: ((isMated: PieceColor) => any) | undefined;
     onStalemate?: (() => any) | undefined;
     onDraw?: (() => any) | undefined;
-    onMove?: ((move: import("chess.js").Move) => any) | undefined;
+    onCheck?: ((isInCheck: PieceColor) => any) | undefined;
     onPromotion?: ((promotion: PromotionEvent) => any) | undefined;
 }, {
     boardConfig: BoardConfig;

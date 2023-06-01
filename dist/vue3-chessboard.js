@@ -1,4 +1,4 @@
-import { defineComponent as at, ref as we, openBlock as Ke, createBlock as lt, Teleport as $t, createElementVNode as ie, normalizeClass as ke, onMounted as Ft, createElementBlock as Ht, createCommentVNode as Ut, watch as jt } from "vue";
+import { defineComponent as at, ref as ke, openBlock as Ke, createBlock as lt, Teleport as $t, createElementVNode as ie, normalizeClass as Ce, onMounted as Ft, createElementBlock as Ht, createCommentVNode as Ut, watch as jt } from "vue";
 const Gt = /* @__PURE__ */ at({
   __name: "PromotionDialog",
   props: {
@@ -9,7 +9,7 @@ const Gt = /* @__PURE__ */ at({
   },
   emits: ["promotionSelected"],
   setup(e, { emit: t }) {
-    const o = we(null);
+    const o = ke(null);
     function n(r) {
       if (r.target == null)
         return;
@@ -28,22 +28,22 @@ const Gt = /* @__PURE__ */ at({
         onTouchstartPassive: n
       }, [
         ie("button", {
-          class: ke(["queen", e.turnColor]),
+          class: Ce(["queen", e.turnColor]),
           "data-piece": "q",
           "aria-label": "Queen"
         }, null, 2),
         ie("button", {
-          class: ke(["knight", e.turnColor]),
+          class: Ce(["knight", e.turnColor]),
           "data-piece": "n",
           "aria-label": "Knight"
         }, null, 2),
         ie("button", {
-          class: ke(["rook", e.turnColor]),
+          class: Ce(["rook", e.turnColor]),
           "data-piece": "r",
           "aria-label": "Rook"
         }, null, 2),
         ie("button", {
-          class: ke(["bishop", e.turnColor]),
+          class: Ce(["bishop", e.turnColor]),
           "data-piece": "b",
           "aria-label": "Bishop"
         }, null, 2)
@@ -717,7 +717,7 @@ var Le = {};
     0,
     0,
     -17
-  ], m = { p: 1, n: 2, b: 4, r: 8, q: 16, k: 32 }, E = "pnbrqkPNBRQK", w = [e.KNIGHT, e.BISHOP, e.ROOK, e.QUEEN], O = 7, W = 6, C = 1, y = 0, F = {
+  ], m = { p: 1, n: 2, b: 4, r: 8, q: 16, k: 32 }, E = "pnbrqkPNBRQK", w = [e.KNIGHT, e.BISHOP, e.ROOK, e.QUEEN], O = 7, W = 6, S = 1, y = 0, F = {
     w: [
       { square: r.a1, flag: n.QSIDE_CASTLE },
       { square: r.h1, flag: n.KSIDE_CASTLE }
@@ -726,7 +726,7 @@ var Le = {};
       { square: r.a8, flag: n.QSIDE_CASTLE },
       { square: r.h8, flag: n.KSIDE_CASTLE }
     ]
-  }, ee = { b: C, w: W }, H = ["1-0", "0-1", "1/2-1/2", "*"];
+  }, ee = { b: S, w: W }, H = ["1-0", "0-1", "1/2-1/2", "*"];
   function U(M) {
     return M >> 4;
   }
@@ -1113,8 +1113,8 @@ var Le = {};
           if (g && g !== P)
             continue;
           for (let L = 0, me = d[P].length; L < me; L++) {
-            const S = d[P][L];
-            for (I = k; I += S, !(I & 136); ) {
+            const C = d[P][L];
+            for (I = k; I += C, !(I & 136); ) {
               if (!this._board[I])
                 R(f, h, k, I, P);
               else {
@@ -1289,15 +1289,15 @@ var Le = {};
     }
     loadPgn(i, { strict: l = !1, newlineChar: a = `\r?
 ` } = {}) {
-      function c(S) {
-        return S.replace(/\\/g, "\\");
+      function c(C) {
+        return C.replace(/\\/g, "\\");
       }
-      function u(S) {
-        const Q = {}, oe = S.split(new RegExp(c(a)));
-        let Te = "", xe = "";
-        for (let ye = 0; ye < oe.length; ye++) {
+      function u(C) {
+        const Q = {}, oe = C.split(new RegExp(c(a)));
+        let Me = "", xe = "";
+        for (let Pe = 0; Pe < oe.length; Pe++) {
           const Ze = /^\s*\[\s*([A-Za-z]+)\s*"(.*)"\s*\]\s*$/;
-          Te = oe[ye].replace(Ze, "$1"), xe = oe[ye].replace(Ze, "$2"), Te.trim().length > 0 && (Q[Te] = xe);
+          Me = oe[Pe].replace(Ze, "$1"), xe = oe[Pe].replace(Ze, "$2"), Me.trim().length > 0 && (Q[Me] = xe);
         }
         return Q;
       }
@@ -1306,8 +1306,8 @@ var Le = {};
       this.reset();
       const _ = u(h);
       let A = "";
-      for (const S in _)
-        S.toLowerCase() === "fen" && (A = _[S]), this.header(S, _[S]);
+      for (const C in _)
+        C.toLowerCase() === "fen" && (A = _[C]), this.header(C, _[C]);
       if (!l)
         A && this.load(A, !0);
       else if (_.SetUp === "1") {
@@ -1315,24 +1315,24 @@ var Le = {};
           throw new Error("Invalid PGN: FEN tag must be supplied with SetUp tag");
         this.load(_.FEN, !0);
       }
-      function N(S) {
-        return Array.from(S).map(function(Q) {
+      function N(C) {
+        return Array.from(C).map(function(Q) {
           return Q.charCodeAt(0) < 128 ? Q.charCodeAt(0).toString(16) : encodeURIComponent(Q).replace(/%/g, "").toLowerCase();
         }).join("");
       }
-      function b(S) {
-        return S.length == 0 ? "" : decodeURIComponent("%" + (S.match(/.{1,2}/g) || []).join("%"));
+      function b(C) {
+        return C.length == 0 ? "" : decodeURIComponent("%" + (C.match(/.{1,2}/g) || []).join("%"));
       }
-      const q = function(S) {
-        return S = S.replace(new RegExp(c(a), "g"), " "), `{${N(S.slice(1, S.length - 1))}}`;
-      }, k = function(S) {
-        if (S.startsWith("{") && S.endsWith("}"))
-          return b(S.slice(1, S.length - 1));
+      const q = function(C) {
+        return C = C.replace(new RegExp(c(a), "g"), " "), `{${N(C.slice(1, C.length - 1))}}`;
+      }, k = function(C) {
+        if (C.startsWith("{") && C.endsWith("}"))
+          return b(C.slice(1, C.length - 1));
       };
       let P = i.replace(h, "").replace(
         // encode comments so they don't get deleted below
         new RegExp(`({[^}]*})+?|;([^${c(a)}]*)`, "g"),
-        function(S, Q, oe) {
+        function(C, Q, oe) {
           return Q !== void 0 ? q(Q) : " " + q(`{${oe.slice(1)}}`);
         }
       ).replace(new RegExp(c(a), "g"), " ");
@@ -1341,20 +1341,20 @@ var Le = {};
         P = P.replace(I, "");
       P = P.replace(/\d+\.(\.\.)?/g, ""), P = P.replace(/\.\.\./g, ""), P = P.replace(/\$\d+/g, "");
       let L = P.trim().split(new RegExp(/\s+/));
-      L = L.filter((S) => S !== "");
+      L = L.filter((C) => C !== "");
       let me = "";
-      for (let S = 0; S < L.length; S++) {
-        const Q = k(L[S]);
+      for (let C = 0; C < L.length; C++) {
+        const Q = k(L[C]);
         if (Q !== void 0) {
           this._comments[this.fen()] = Q;
           continue;
         }
-        const oe = this._moveFromSan(L[S], l);
+        const oe = this._moveFromSan(L[C], l);
         if (oe == null)
-          if (H.indexOf(L[S]) > -1)
-            me = L[S];
+          if (H.indexOf(L[C]) > -1)
+            me = L[C];
           else
-            throw new Error(`Invalid move in PGN: ${L[S]}`);
+            throw new Error(`Invalid move in PGN: ${L[C]}`);
         else
           me = "", this._makeMove(oe);
       }
@@ -1555,7 +1555,7 @@ const xt = () => {
 }, Fe = (e) => e === "white" ? "black" : "white", Se = (e, t) => {
   const o = e[0] - t[0], n = e[1] - t[1];
   return o * o + n * n;
-}, qe = (e, t) => e.role === t.role && e.color === t.color, Ce = (e) => (t, o) => [(o ? t[0] : 7 - t[0]) * e.width / 8, (o ? 7 - t[1] : t[1]) * e.height / 8], Z = (e, t) => {
+}, qe = (e, t) => e.role === t.role && e.color === t.color, ye = (e) => (t, o) => [(o ? t[0] : 7 - t[0]) * e.width / 8, (o ? 7 - t[1] : t[1]) * e.height / 8], Z = (e, t) => {
   e.style.transform = `translate(${t[0]}px,${t[1]}px)`;
 }, ut = (e, t, o = 1) => {
   e.style.transform = `translate(${t[0]}px,${t[1]}px) scale(${o})`;
@@ -1694,21 +1694,21 @@ function Re(e, t, o) {
       return;
     }
   }
-  (e.selectable.enabled || e.draggable.enabled) && (Ct(e, t) || Ge(e, t)) && (St(e, t), e.hold.start());
+  (e.selectable.enabled || e.draggable.enabled) && (St(e, t) || Ge(e, t)) && (Ct(e, t), e.hold.start());
 }
-function St(e, t) {
+function Ct(e, t) {
   e.selected = t, Ge(e, t) ? e.premovable.dests = bt(e.pieces, t, e.premovable.castle) : e.premovable.dests = void 0;
 }
 function V(e) {
   e.selected = void 0, e.premovable.dests = void 0, e.hold.cancel();
 }
-function Ct(e, t) {
+function St(e, t) {
   const o = e.pieces.get(t);
   return !!o && (e.movable.color === "both" || e.movable.color === o.color && e.turnColor === o.color);
 }
 const je = (e, t, o) => {
   var n, r;
-  return t !== o && Ct(e, t) && (e.movable.free || !!(!((r = (n = e.movable.dests) === null || n === void 0 ? void 0 : n.get(t)) === null || r === void 0) && r.includes(o)));
+  return t !== o && St(e, t) && (e.movable.free || !!(!((r = (n = e.movable.dests) === null || n === void 0 ? void 0 : n.get(t)) === null || r === void 0) && r.includes(o)));
 };
 function io(e, t, o) {
   const n = e.pieces.get(t);
@@ -1839,7 +1839,7 @@ function Et(e, t) {
 }
 function At(e, t) {
   var o, n, r;
-  if (!((o = t.movable) === null || o === void 0) && o.dests && (e.movable.dests = void 0), !((n = t.drawable) === null || n === void 0) && n.autoShapes && (e.drawable.autoShapes = []), ze(e, t), t.fen && (e.pieces = Pt(t.fen), e.drawable.shapes = ((r = t.drawable) === null || r === void 0 ? void 0 : r.shapes) || []), "check" in t && to(e, t.check || !1), "lastMove" in t && !t.lastMove ? e.lastMove = void 0 : t.lastMove && (e.lastMove = t.lastMove), e.selected && St(e, e.selected), Et(e, t), !e.movable.rookCastle && e.movable.dests) {
+  if (!((o = t.movable) === null || o === void 0) && o.dests && (e.movable.dests = void 0), !((n = t.drawable) === null || n === void 0) && n.autoShapes && (e.drawable.autoShapes = []), ze(e, t), t.fen && (e.pieces = Pt(t.fen), e.drawable.shapes = ((r = t.drawable) === null || r === void 0 ? void 0 : r.shapes) || []), "check" in t && to(e, t.check || !1), "lastMove" in t && !t.lastMove ? e.lastMove = void 0 : t.lastMove && (e.lastMove = t.lastMove), e.selected && Ct(e, e.selected), Et(e, t), !e.movable.rookCastle && e.movable.dests) {
     const s = e.movable.color === "white" ? "1" : "8", d = "e" + s, p = e.movable.dests.get(d), v = e.pieces.get(d);
     if (!p || !v || v.role !== "king")
       return;
@@ -1861,7 +1861,7 @@ function re(e, t) {
   const o = e(t);
   return t.dom.redraw(), o;
 }
-const Me = (e, t) => ({
+const Ne = (e, t) => ({
   key: e,
   pos: K(e),
   piece: t
@@ -1870,9 +1870,9 @@ function bo(e, t) {
   const o = /* @__PURE__ */ new Map(), n = [], r = /* @__PURE__ */ new Map(), s = [], d = [], p = /* @__PURE__ */ new Map();
   let v, m, E;
   for (const [w, O] of e)
-    p.set(w, Me(w, O));
+    p.set(w, Ne(w, O));
   for (const w of $e)
-    v = t.pieces.get(w), m = p.get(w), v ? m ? qe(v, m.piece) || (s.push(m), d.push(Me(w, v))) : d.push(Me(w, v)) : m && s.push(m);
+    v = t.pieces.get(w), m = p.get(w), v ? m ? qe(v, m.piece) || (s.push(m), d.push(Ne(w, v))) : d.push(Ne(w, v)) : m && s.push(m);
   for (const w of d)
     m = mo(w, s.filter((O) => qe(w.piece, O.piece))), m && (E = [m.pos[0] - w.pos[0], m.pos[1] - w.pos[1]], o.set(w.key, E.concat(E)), n.push(m.key));
   for (const w of s)
@@ -1935,10 +1935,10 @@ function Mt(e) {
     }
   });
 }
-function So(e, t) {
+function Co(e, t) {
   e.drawable.current && (e.drawable.current.pos = pe(t));
 }
-function Co(e) {
+function So(e) {
   const t = e.drawable.current;
   t && (t.mouseSq && Eo(e.drawable, t), Nt(e));
 }
@@ -1988,7 +1988,7 @@ function Ao(e, t) {
       keyHasChanged: !1
     }, E.cgDragging = !0, E.classList.add("dragging");
     const w = e.dom.elements.ghost;
-    w && (w.className = `ghost ${s.color} ${s.role}`, Z(w, Ce(o)(K(r), $(e))), He(w, !0)), Ve(e);
+    w && (w.className = `ghost ${s.color} ${s.role}`, Z(w, ye(o)(K(r), $(e))), He(w, !0)), Ve(e);
   } else
     p && le(e), v && ce(e);
   e.dom.redraw();
@@ -2028,7 +2028,7 @@ function Ve(e) {
     !((t = e.animation.current) === null || t === void 0) && t.plan.anims.has(o.orig) && (e.animation.current = void 0);
     const n = e.pieces.get(o.orig);
     if (!n || !qe(n, o.piece))
-      Pe(e);
+      Ee(e);
     else if (!o.started && Se(o.pos, o.origPos) >= Math.pow(e.draggable.distance, 2) && (o.started = !0), o.started) {
       if (typeof o.element == "function") {
         const s = o.element();
@@ -2060,7 +2060,7 @@ function Io(e, t) {
   const n = pe(t) || o.pos, r = ge(n, $(e), e.dom.bounds());
   r && o.started && o.orig !== r ? o.newPiece ? kt(e, o.orig, r, o.force) : (e.stats.ctrlKey = t.ctrlKey, wt(e, o.orig, r) && (e.stats.dragged = !0)) : o.newPiece ? e.pieces.delete(o.orig) : e.draggable.deleteOnDropOff && !r && (e.pieces.delete(o.orig), B(e.events.change)), (o.orig === o.previouslySelected || o.keyHasChanged) && (o.orig === r || !r) ? V(e) : e.selectable.enabled || V(e), Ot(e), e.draggable.current = void 0, e.dom.redraw();
 }
-function Pe(e) {
+function Ee(e) {
   const t = e.draggable.current;
   t && (t.newPiece && e.pieces.delete(t.orig), e.draggable.current = void 0, V(e), Ot(e), e.dom.redraw());
 }
@@ -2130,12 +2130,12 @@ function Ko(e, t) {
     },
     cancelMove() {
       re((n) => {
-        Qe(n), Pe(n);
+        Qe(n), Ee(n);
       }, e);
     },
     stop() {
       re((n) => {
-        Ye(n), Pe(n);
+        Ye(n), Ee(n);
       }, e);
     },
     explode(n) {
@@ -2259,25 +2259,25 @@ function x(e) {
   return document.createElementNS("http://www.w3.org/2000/svg", e);
 }
 function Ro(e, t, o) {
-  const n = e.drawable, r = n.current, s = r && r.mouseSq ? r : void 0, d = /* @__PURE__ */ new Map(), p = e.dom.bounds(), v = n.autoShapes.filter((C) => !C.piece);
-  for (const C of n.shapes.concat(v).concat(s ? [s] : []))
-    C.dest && d.set(C.dest, (d.get(C.dest) || 0) + 1);
-  const m = n.shapes.concat(v).map((C) => ({
-    shape: C,
+  const n = e.drawable, r = n.current, s = r && r.mouseSq ? r : void 0, d = /* @__PURE__ */ new Map(), p = e.dom.bounds(), v = n.autoShapes.filter((S) => !S.piece);
+  for (const S of n.shapes.concat(v).concat(s ? [s] : []))
+    S.dest && d.set(S.dest, (d.get(S.dest) || 0) + 1);
+  const m = n.shapes.concat(v).map((S) => ({
+    shape: S,
     current: !1,
-    hash: et(C, d, !1, p)
+    hash: et(S, d, !1, p)
   }));
   s && m.push({
     shape: s,
     current: !0,
     hash: et(s, d, !0, p)
   });
-  const E = m.map((C) => C.hash).join(";");
+  const E = m.map((S) => S.hash).join(";");
   if (E === e.drawable.prevSvgHash)
     return;
   e.drawable.prevSvgHash = E;
   const w = t.querySelector("defs"), O = t.querySelector("g"), W = o.querySelector("g");
-  Do(n, m, w), De(m.filter((C) => !C.shape.customSvg), O, (C) => tt(e, C, n.brushes, d, p)), De(m.filter((C) => C.shape.customSvg), W, (C) => tt(e, C, n.brushes, d, p));
+  Do(n, m, w), De(m.filter((S) => !S.shape.customSvg), O, (S) => tt(e, S, n.brushes, d, p)), De(m.filter((S) => S.shape.customSvg), W, (S) => tt(e, S, n.brushes, d, p));
 }
 function Do(e, t, o) {
   const n = /* @__PURE__ */ new Map();
@@ -2330,11 +2330,11 @@ function tt(e, { shape: t, current: o, hash: n }, r, s, d) {
   return p.setAttribute("cgHash", n), p;
 }
 function $o(e, t, o) {
-  const [n, r] = Ee(t, o), s = ae(x("g"), { transform: `translate(${n},${r})` }), d = ae(x("svg"), { width: 1, height: 1, viewBox: "0 0 100 100" });
+  const [n, r] = Ae(t, o), s = ae(x("g"), { transform: `translate(${n},${r})` }), d = ae(x("svg"), { width: 1, height: 1, viewBox: "0 0 100 100" });
   return s.appendChild(d), d.innerHTML = e, s;
 }
 function Fo(e, t, o, n) {
-  const r = Ee(t, n), s = jo(), d = (n.width + n.height) / (4 * Math.max(n.width, n.height));
+  const r = Ae(t, n), s = jo(), d = (n.width + n.height) / (4 * Math.max(n.width, n.height));
   return ae(x("circle"), {
     stroke: e.color,
     "stroke-width": s[o ? 0 : 1],
@@ -2346,7 +2346,7 @@ function Fo(e, t, o, n) {
   });
 }
 function Ho(e, t, o, n, r, s) {
-  const d = Qo(r && !n), p = Ee(t, s), v = Ee(o, s), m = v[0] - p[0], E = v[1] - p[1], w = Math.atan2(E, m), O = Math.cos(w) * d, W = Math.sin(w) * d;
+  const d = Qo(r && !n), p = Ae(t, s), v = Ae(o, s), m = v[0] - p[0], E = v[1] - p[1], w = Math.atan2(E, m), O = Math.cos(w) * d, W = Math.sin(w) * d;
   return ae(x("line"), {
     stroke: e.color,
     "stroke-width": Go(e, n),
@@ -2401,7 +2401,7 @@ function Rt(e, t) {
 function Qo(e) {
   return (e ? 20 : 10) / 64;
 }
-function Ee(e, t) {
+function Ae(e, t) {
   const o = Math.min(1, t.width / t.height), n = Math.min(1, t.height / t.width);
   return [(e[0] - 3.5) * o, (3.5 - e[1]) * n];
 }
@@ -2470,42 +2470,42 @@ function xo(e, t) {
 }
 function Zo(e, t) {
   const o = [];
-  if ("ResizeObserver" in window || o.push(ve(document.body, "chessground.resize", t)), !e.viewOnly) {
-    const n = rt(e, No, So), r = rt(e, Io, Co);
+  if ("ResizeObserver" in window || o.push(_e(document.body, "chessground.resize", t)), !e.viewOnly) {
+    const n = rt(e, No, Co), r = rt(e, Io, So);
     for (const d of ["touchmove", "mousemove"])
-      o.push(ve(document, d, n));
+      o.push(_e(document, d, n));
     for (const d of ["touchend", "mouseup"])
-      o.push(ve(document, d, r));
+      o.push(_e(document, d, r));
     const s = () => e.dom.bounds.clear();
-    o.push(ve(document, "scroll", s, { capture: !0, passive: !0 })), o.push(ve(window, "resize", s, { passive: !0 }));
+    o.push(_e(document, "scroll", s, { capture: !0, passive: !0 })), o.push(_e(window, "resize", s, { passive: !0 }));
   }
   return () => o.forEach((n) => n());
 }
-function ve(e, t, o, n) {
+function _e(e, t, o, n) {
   return e.addEventListener(t, o, n), () => e.removeEventListener(t, o, n);
 }
 const Yo = (e) => (t) => {
-  e.draggable.current ? Pe(e) : e.drawable.current ? Nt(e) : t.shiftKey || dt(t) ? e.drawable.enabled && ko(e, t) : e.viewOnly || (e.dropmode.active ? Vo(e, t) : Ao(e, t));
+  e.draggable.current ? Ee(e) : e.drawable.current ? Nt(e) : t.shiftKey || dt(t) ? e.drawable.enabled && ko(e, t) : e.viewOnly || (e.dropmode.active ? Vo(e, t) : Ao(e, t));
 }, rt = (e, t, o) => (n) => {
   e.drawable.current ? e.drawable.enabled && o(e, n) : e.viewOnly || t(e, n);
 };
 function Xo(e) {
-  const t = $(e), o = Ce(e.dom.bounds()), n = e.dom.elements.board, r = e.pieces, s = e.animation.current, d = s ? s.plan.anims : /* @__PURE__ */ new Map(), p = s ? s.plan.fadings : /* @__PURE__ */ new Map(), v = e.draggable.current, m = en(e), E = /* @__PURE__ */ new Set(), w = /* @__PURE__ */ new Set(), O = /* @__PURE__ */ new Map(), W = /* @__PURE__ */ new Map();
-  let C, y, F, ee, H, U, Y, j, D, X;
+  const t = $(e), o = ye(e.dom.bounds()), n = e.dom.elements.board, r = e.pieces, s = e.animation.current, d = s ? s.plan.anims : /* @__PURE__ */ new Map(), p = s ? s.plan.fadings : /* @__PURE__ */ new Map(), v = e.draggable.current, m = en(e), E = /* @__PURE__ */ new Set(), w = /* @__PURE__ */ new Set(), O = /* @__PURE__ */ new Map(), W = /* @__PURE__ */ new Map();
+  let S, y, F, ee, H, U, Y, j, D, X;
   for (y = n.firstChild; y; ) {
-    if (C = y.cgKey, Dt(y))
-      if (F = r.get(C), H = d.get(C), U = p.get(C), ee = y.cgPiece, y.cgDragging && (!v || v.orig !== C) && (y.classList.remove("dragging"), Z(y, o(K(C), t)), y.cgDragging = !1), !U && y.cgFading && (y.cgFading = !1, y.classList.remove("fading")), F) {
-        if (H && y.cgAnimating && ee === _e(F)) {
-          const T = K(C);
+    if (S = y.cgKey, Dt(y))
+      if (F = r.get(S), H = d.get(S), U = p.get(S), ee = y.cgPiece, y.cgDragging && (!v || v.orig !== S) && (y.classList.remove("dragging"), Z(y, o(K(S), t)), y.cgDragging = !1), !U && y.cgFading && (y.cgFading = !1, y.classList.remove("fading")), F) {
+        if (H && y.cgAnimating && ee === we(F)) {
+          const T = K(S);
           T[0] += H[2], T[1] += H[3], y.classList.add("anim"), Z(y, o(T, t));
         } else
-          y.cgAnimating && (y.cgAnimating = !1, y.classList.remove("anim"), Z(y, o(K(C), t)), e.addPieceZIndex && (y.style.zIndex = Ne(K(C), t)));
-        ee === _e(F) && (!U || !y.cgFading) ? E.add(C) : U && ee === _e(U) ? (y.classList.add("fading"), y.cgFading = !0) : Ie(O, ee, y);
+          y.cgAnimating && (y.cgAnimating = !1, y.classList.remove("anim"), Z(y, o(K(S), t)), e.addPieceZIndex && (y.style.zIndex = Ie(K(S), t)));
+        ee === we(F) && (!U || !y.cgFading) ? E.add(S) : U && ee === we(U) ? (y.classList.add("fading"), y.cgFading = !0) : Oe(O, ee, y);
       } else
-        Ie(O, ee, y);
+        Oe(O, ee, y);
     else if (Lt(y)) {
       const T = y.className;
-      m.get(C) === T ? w.add(C) : Ie(W, T, y);
+      m.get(S) === T ? w.add(S) : Oe(W, T, y);
     }
     y = y.nextSibling;
   }
@@ -2522,13 +2522,13 @@ function Xo(e) {
     }
   for (const [T, ue] of r)
     if (H = d.get(T), !E.has(T))
-      if (Y = O.get(_e(ue)), j = Y && Y.pop(), j) {
+      if (Y = O.get(we(ue)), j = Y && Y.pop(), j) {
         j.cgKey = T, j.cgFading && (j.classList.remove("fading"), j.cgFading = !1);
         const R = K(T);
-        e.addPieceZIndex && (j.style.zIndex = Ne(R, t)), H && (j.cgAnimating = !0, j.classList.add("anim"), R[0] += H[2], R[1] += H[3]), Z(j, o(R, t));
+        e.addPieceZIndex && (j.style.zIndex = Ie(R, t)), H && (j.cgAnimating = !0, j.classList.add("anim"), R[0] += H[2], R[1] += H[3]), Z(j, o(R, t));
       } else {
-        const R = _e(ue), G = J("piece", R), te = K(T);
-        G.cgPiece = R, G.cgKey = T, H && (G.cgAnimating = !0, te[0] += H[2], te[1] += H[3]), Z(G, o(te, t)), e.addPieceZIndex && (G.style.zIndex = Ne(te, t)), n.appendChild(G);
+        const R = we(ue), G = J("piece", R), te = K(T);
+        G.cgPiece = R, G.cgKey = T, H && (G.cgAnimating = !0, te[0] += H[2], te[1] += H[3]), Z(G, o(te, t)), e.addPieceZIndex && (G.style.zIndex = Ie(te, t)), n.appendChild(G);
       }
   for (const T of O.values())
     st(e, T);
@@ -2536,7 +2536,7 @@ function Xo(e) {
     st(e, T);
 }
 function Jo(e) {
-  const t = $(e), o = Ce(e.dom.bounds());
+  const t = $(e), o = ye(e.dom.bounds());
   let n = e.dom.elements.board.firstChild;
   for (; n; )
     (Dt(n) && !n.cgAnimating || Lt(n)) && Z(n, o(K(n.cgKey), t)), n = n.nextSibling;
@@ -2551,11 +2551,11 @@ function st(e, t) {
   for (const o of t)
     e.dom.elements.board.removeChild(o);
 }
-function Ne(e, t) {
+function Ie(e, t) {
   const n = e[1];
   return `${t ? 3 + 7 - n : 3 + n}`;
 }
-const _e = (e) => `${e.color} ${e.role}`;
+const we = (e) => `${e.color} ${e.role}`;
 function en(e) {
   var t;
   const o = /* @__PURE__ */ new Map();
@@ -2588,7 +2588,7 @@ function ne(e, t, o) {
   const n = e.get(t);
   n ? e.set(t, `${n} ${o}`) : e.set(t, o);
 }
-function Ie(e, t, o) {
+function Oe(e, t, o) {
   const n = e.get(t);
   n ? n.push(o) : e.set(t, [o]);
 }
@@ -2602,7 +2602,7 @@ function tn(e, t) {
 }
 function on(e) {
   var t;
-  const o = $(e), n = Ce(e.dom.bounds());
+  const o = $(e), n = ye(e.dom.bounds());
   let r = (t = e.dom.elements.autoPieces) === null || t === void 0 ? void 0 : t.firstChild;
   for (; r; )
     ut(r, n(K(r.cgKey), o), r.cgScale), r = r.nextSibling;
@@ -2610,7 +2610,7 @@ function on(e) {
 function nn(e, { shape: t, hash: o }, n) {
   var r, s, d;
   const p = t.orig, v = (r = t.piece) === null || r === void 0 ? void 0 : r.role, m = (s = t.piece) === null || s === void 0 ? void 0 : s.color, E = (d = t.piece) === null || d === void 0 ? void 0 : d.scale, w = J("piece", `${v} ${m}`);
-  return w.setAttribute("cgHash", o), w.cgKey = p, w.cgScale = E, ut(w, Ce(n)(K(p), $(e)), E), w;
+  return w.setAttribute("cgHash", o), w.cgKey = p, w.cgScale = E, ut(w, ye(n)(K(p), $(e)), E), w;
 }
 const rn = (e) => {
   var t, o, n;
@@ -2643,7 +2643,7 @@ function an(e) {
     }));
   };
 }
-function be(e) {
+function ve(e) {
   const t = [];
   for (const o of e)
     t.push({ orig: o.to, brush: "yellow" }), o.captured && t.push({ orig: o.from, dest: o.to, brush: "red" }), o.san.includes("+") && t.push({ orig: o.from, dest: o.to, brush: "blue" });
@@ -2692,18 +2692,14 @@ function Wt(e, t) {
     t[o] instanceof Object && Object.assign(t[o], Wt(e[o], t[o]));
   return Object.assign(e || {}, t), e;
 }
-function Ae(e, t, o) {
-  if (e.inCheck()) {
+function Te(e, t, o) {
+  const n = e.history({ verbose: !0 }).pop();
+  if (typeof n < "u" && o("move", n), e.inCheck()) {
     const r = t.state.pieces;
     for (const [s, d] of r)
-      if (d.role === "king" && d.color === t?.state.turnColor) {
-        t.state.check = s, o("check", t.state.turnColor), e.isCheckmate() && o("checkmate", t.state.turnColor);
-        return;
-      }
+      d.role === "king" && d.color === t?.state.turnColor && (t.state.check = s, e.isCheckmate() ? o("checkmate", t.state.turnColor) : o("check", t.state.turnColor));
   }
-  e.isDraw() && o("draw", !0), e.isStalemate() && o("stalemate", !0);
-  const n = e.history({ verbose: !0 }).pop();
-  typeof n < "u" && o("move", n);
+  e.isDraw() && o("draw"), e.isStalemate() && o("stalemate");
 }
 class un {
   game;
@@ -2717,7 +2713,7 @@ class un {
    * Resets the board to the initial starting position.
    */
   resetBoard() {
-    this.game.reset(), this.board.redrawAll(), this.board.set(this.boardState.boardConfig), this.board.state.check = void 0, this.board.selectSquare(null), this.boardState.showThreats && this.board.setShapes(be(this.game.moves({ verbose: !0 })));
+    this.game.reset(), this.board.redrawAll(), this.board.set(this.boardState.boardConfig), this.board.state.check = void 0, this.board.selectSquare(null), this.boardState.showThreats && this.board.setShapes(ve(this.game.moves({ verbose: !0 })));
   }
   /**
    * undo last move, if possible
@@ -2726,7 +2722,7 @@ class un {
     if (this.game.undo() == null)
       return;
     const o = this.game.history({ verbose: !0 }).at(-1);
-    this.board.set({ fen: this.game.fen() }), this.board.state.turnColor = fe(this.game.turn()), this.board.state.movable.color = this.boardState.playerColor || this.board.state.turnColor, this.board.state.movable.dests = se(this.game), this.board.state.check = void 0, this.game.history().length === 0 || typeof o > "u" ? this.board.state.lastMove = void 0 : this.board.state.lastMove = [o?.from, o?.to], this.boardState.showThreats && this.board.setShapes(be(this.game.moves({ verbose: !0 })));
+    this.board.set({ fen: this.game.fen() }), this.board.state.turnColor = fe(this.game.turn()), this.board.state.movable.color = this.boardState.playerColor || this.board.state.turnColor, this.board.state.movable.dests = se(this.game), this.board.state.check = void 0, this.game.history().length === 0 || typeof o > "u" ? this.board.state.lastMove = void 0 : this.board.state.lastMove = [o?.from, o?.to], this.boardState.showThreats && this.board.setShapes(ve(this.game.moves({ verbose: !0 })));
   }
   /**
    * returns the current material count for white, black and the diff.
@@ -2759,7 +2755,7 @@ class un {
    * draws arrows and circles on the board for possible moves/captures
    */
   drawMoves() {
-    this.boardState.showThreats = !0, this.board.setShapes(be(this.game.moves({ verbose: !0 })));
+    this.boardState.showThreats = !0, this.board.setShapes(ve(this.game.moves({ verbose: !0 })));
   }
   /**
    * removes arrows and circles from the board for possible moves/captures
@@ -2783,7 +2779,7 @@ class un {
    * toggle drawing of arrows and circles on the board for possible moves/captures
    */
   toggleMoves() {
-    this.boardState.showThreats = !this.boardState.showThreats, this.boardState.showThreats ? this.board.setShapes(be(this.game.moves({ verbose: !0 }))) : this.board.setShapes([]);
+    this.boardState.showThreats = !this.boardState.showThreats, this.boardState.showThreats ? this.board.setShapes(ve(this.game.moves({ verbose: !0 }))) : this.board.setShapes([]);
   }
   /**
    * returns the opening name for the current position from lichess api
@@ -2825,7 +2821,7 @@ class un {
       });
     } else
       this.board.move(o.from, o.to);
-    return this.board.state.movable.dests = se(this.game), this.board.state.turnColor = fe(this.game.turn()), this.board.state.movable.color = this.boardState.playerColor || this.board.state.turnColor, this.board.state.lastMove = [o.from, o.to], this.boardState.showThreats && this.board.setShapes(be(this.game.moves({ verbose: !0 }))), Ae(this.game, this.board, this.emit), !0;
+    return this.board.state.movable.dests = se(this.game), this.board.state.turnColor = fe(this.game.turn()), this.board.state.movable.color = this.boardState.playerColor || this.board.state.turnColor, this.board.state.lastMove = [o.from, o.to], this.boardState.showThreats && this.board.setShapes(ve(this.game.moves({ verbose: !0 }))), Te(this.game, this.board, this.emit), !0;
   }
   /**
    * returns the current turn color
@@ -2975,7 +2971,7 @@ class un {
    * apply the fen game on the board
    */
   updateGameState() {
-    this.board.set({ fen: this.game.fen() }), this.board.state.turnColor = fe(this.game.turn()), this.board.state.movable.color = this.boardState.playerColor || this.board.state.turnColor, this.board.state.movable.dests = se(this.game), Ae(this.game, this.board, this.emit);
+    this.board.set({ fen: this.game.fen() }), this.board.state.turnColor = fe(this.game.turn()), this.board.state.movable.color = this.boardState.playerColor || this.board.state.turnColor, this.board.state.movable.dests = se(this.game), Te(this.game, this.board, this.emit);
   }
   /**
    * returns the header information of the current pgn, if no pgn is loaded, returns an empty object
@@ -3006,7 +3002,7 @@ const dn = /* @__PURE__ */ new Map([
   ["f2", ["f3", "f4"]],
   ["g2", ["g3", "g4"]],
   ["h2", ["h3", "h4"]]
-]), fn = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", Oe = {
+]), fn = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", be = {
   fen: fn,
   orientation: "white",
   turnColor: "white",
@@ -3082,7 +3078,7 @@ const dn = /* @__PURE__ */ new Map([
   props: {
     boardConfig: {
       type: Object,
-      default: Oe
+      default: be
     },
     playerColor: {
       type: [String, void 0],
@@ -3093,7 +3089,7 @@ const dn = /* @__PURE__ */ new Map([
   setup(e, { emit: t }) {
     const o = e;
     let n;
-    const r = we(null), s = new Le.Chess(), d = we("white"), p = we(), v = we({
+    const r = ke(null), s = new Le.Chess(), d = ke("white"), p = ke(), v = ke({
       showThreats: !1,
       boardConfig: {},
       openPromotionDialog: !1,
@@ -3102,15 +3098,17 @@ const dn = /* @__PURE__ */ new Map([
     Ft(() => {
       if (r.value == null)
         throw new Error("vue3-chessboard: Failed to mount board.");
-      o.boardConfig ? v.value.boardConfig = Wt(Oe, o.boardConfig) : v.value.boardConfig = Oe, o.playerColor && (v.value.boardConfig.movable = {
+      o.boardConfig ? v.value.boardConfig = Wt(be, o.boardConfig) : v.value.boardConfig = be, o.playerColor && (v.value.boardConfig.movable = {
         color: o.playerColor,
-        dests: se(s)
+        dests: se(s),
+        free: o.boardConfig?.movable?.free || be?.movable?.free
       }), o.boardConfig.fen && (s.load(o.boardConfig.fen), v.value.boardConfig.turnColor = fe(s.turn()), v.value.boardConfig.check = s.inCheck(), v.value.boardConfig.movable = {
         color: o.playerColor || v.value.boardConfig.turnColor,
-        dests: se(s)
+        dests: se(s),
+        free: o.boardConfig?.movable?.free || be?.movable?.free
       }), n = sn(r.value, v.value.boardConfig), n.set({
         movable: { events: { after: E() }, dests: se(s) }
-      }), d.value = fe(s.turn()), t("boardCreated", new un(s, n, v.value, t)), Ae(s, n, t);
+      }), d.value = fe(s.turn()), t("boardCreated", new un(s, n, v.value, t)), Te(s, n, t);
     });
     async function m() {
       return d.value = fe(s.turn()), v.value.openPromotionDialog = !0, new Promise(
@@ -3125,10 +3123,10 @@ const dn = /* @__PURE__ */ new Map([
         }
         if (cn(O, s.get(w))) {
           await m(), v.value.openPromotionDialog = !1;
-          const W = p.value?.toUpperCase(), C = `${w[0]}x${O}=${W}`;
+          const W = p.value?.toUpperCase(), S = `${w[0]}x${O}=${W}`;
           t("promotion", {
             color: n.state.turnColor,
-            sanMove: C,
+            sanMove: S,
             promotedTo: W
           });
         }
@@ -3144,17 +3142,18 @@ const dn = /* @__PURE__ */ new Map([
           turnColor: n.state.turnColor,
           movable: {
             color: o.playerColor || n.state.turnColor,
-            dests: se(s)
+            dests: se(s),
+            free: o.boardConfig?.movable?.free || be?.movable?.free
           }
         }), n.set({
           animation: {
             enabled: !0
           }
-        }), Ae(s, n, t), v.value.showThreats && n.setShapes(be(s.moves({ verbose: !0 })));
+        }), Te(s, n, t), v.value.showThreats && n.setShapes(ve(s.moves({ verbose: !0 })));
       };
     }
     return (w, O) => (Ke(), Ht("section", {
-      class: ke(["main-wrap", { disabledBoard: v.value.openPromotionDialog }])
+      class: Ce(["main-wrap", { disabledBoard: v.value.openPromotionDialog }])
     }, [
       ie("div", hn, [
         ie("div", pn, [
